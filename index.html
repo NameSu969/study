@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 1000px;
+            background: #06091c;
+        }
+        ul,li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .wrap {
+            width: 960px;
+            padding: 60px 0;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+        }
+        .header .title {
+            color: #eee5a2;
+            font-size: 88px;
+            margin: 0;
+        }
+        .header p {
+            color: #ccc;
+        }
+        .content {
+            position: relative;
+            height: 640px;
+            /* background: #ccc; */
+        }
+        .solarsystem{
+            position: relative;
+        }
+        .solarsystem li {
+            position: absolute;
+            font-size: 0;
+            /* font-size: 12px; */
+            text-align: center;
+            border-radius: 50%;
+            color: #fff;
+            border: 2px solid #3c3f4d;
+        }
+        .solarsystem li span {
+            position: absolute;
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .solarsystem li.sun{
+            height: 60px;
+            width: 60px;
+            left: 450px;
+            top: 290px;
+            border: 0;
+            background: #fc3;
+            background-image: linear-gradient(to top, rgb(204,153,0),rgb(255,219,112));
+            box-shadow: 0 0 50px #c90;
+        }
+        .solarsystem li.mercury {
+            height: 110px;
+            width: 110px;
+            top: 265px;
+            left: 425px;
+            animation: rotate 10s linear infinite;
+        }
+        .solarsystem li.mercury span {
+            top: 20px;
+            left: 97px;
+            background-color: #b7b9bb;
+        }
+        .solarsystem li.venus {
+            height: 160px;
+            width: 160px;
+            top: 240px;
+            left: 400px;
+            animation: rotate 15s linear infinite;
+        }
+        .solarsystem li.venus span {
+            top: 120px;
+            left: 142px;
+            background-color: #bf8639;
+        }
+        .solarsystem li.earth {
+            height: 220px;
+            width: 220px;
+            top: 210px;
+            left: 370px;
+            animation: rotate 24s linear infinite;
+        }
+        .solarsystem li.earth span {
+            top: 104px;
+            left: 215px;
+            background-color: #0066cc;
+        }
+        .solarsystem li.mars {  
+            height: 280px;
+            width: 280px;
+            top: 180px;
+            left: 340px;
+            animation: rotate 34s linear infinite;
+        }
+        .solarsystem li.mars span {
+            top: -5px;
+            left: 154px;
+            background-color: #aa4200;
+        }
+        .solarsystem li.jupiter {
+            height: 330px;
+            width: 330px;
+            top: 155px;
+            left: 315px;
+            animation: rotate 44s linear infinite;
+        }
+        .solarsystem li.jupiter span {
+            top: 300px;
+            left: 250px;
+            background-color: #e0ae6f;
+        }
+        .solarsystem li.saturn {
+            height: 400px;
+            width: 400px;
+            top: 120px;
+            left: 280px;
+            animation: rotate 54s linear infinite;
+        }
+        .solarsystem li.saturn span {
+            top: 100px;
+            left: 372px;
+            background-color: #dfd3a9;
+        }
+        .solarsystem li.uranus {
+            height: 460px;
+            width: 460px;
+            top: 90px;
+            left: 250px;
+            animation: rotate 64s linear infinite;
+        }
+        .solarsystem li.uranus span {
+            top: 300px;
+            left: 442px;
+            background-color: #82b3d1;
+        }
+        .solarsystem li.neptune {
+            height: 520px;
+            width: 520px;
+            top: 60px;
+            left: 220px;
+            animation: rotate 74s linear infinite;
+        }
+        .solarsystem li.neptune span {
+            top: 230px;
+            left: 514px;
+            background-color: #77c2ec;
+        }
+        .solarsystem li.pluto {
+            height: 580px;
+            width: 580px;
+            top: 30px;
+            left: 190px;
+            animation: rotate 84s linear infinite;
+        }
+        .solarsystem li.pluto span {
+            top: 440px;
+            left: 532px;
+            background-color: #7c6a5c;
+        }
+        /* 960 x 640 */
+
+        /* 描述栏 */
+        .descriptions {
+            position: absolute;
+            right: 0;
+            top: 50px;
+        }
+        .descriptions li h2 {
+            line-height: 20px;
+            color: #eee5a2;
+            cursor: pointer;
+        }
+        .descriptions li p {
+            display: none;
+            position: absolute;
+            left: -320px;
+            top: 0;
+            width: 260px;
+            padding: 20px;
+            color: #06091c;
+            font-size: 12px;
+            text-indent: 2em;
+            background-color: #fff;
+            z-index: 99;
+        }
+        .descriptions li:hover h2{
+            color: #aa4200;
+        }
+        .descriptions li:hover p{
+            display: block;
+        }
+
+
+        /* 运动轨迹 */
+        @keyframes rotate{
+            0% {
+                transform: rotateZ(0);
+            }
+            100% {
+                transform: rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <h1 class="title">最好不过太阳系</h1>
+            <p>有机会一定去月球走一走看一看</p>
+        </div>
+        <div class="content">
+            <ul class="solarsystem">
+                <li class="sun"><span>太阳</span></li>
+                <li class="mercury"><span>水星</span></li>
+                <li class="venus"><span>金星</span></li>
+                <li class="earth"><span>地球</span></li>
+                <li class="mars"><span>火星</span></li>
+                <li class="jupiter"><span>木星</span></li>
+                <li class="saturn"><span>土星</span></li>
+                <li class="uranus"><span>天王星</span></li>
+                <li class="neptune"><span>海王星</span></li>
+                <li class="pluto"><span>冥王星</span></li>
+            </ul>
+            <ul class="descriptions">
+                <li>
+                    <h2>太阳</h2>
+                    <p>太阳是太阳系的中心天体，占有太阳系总体质量的99.86%。太阳系中的八大行星、小行星、流星、彗星、外海王星天体以及星际尘埃等，都围绕着太阳公转，而太阳则围绕着银河系的中心公转。</p>
+                </li>
+                <li>
+                    <h2>水星</h2>
+                    <p>水星（英语：Mercury，拉丁语：Mercurius，符号：☿），在太阳系八大行星里，水星是离太阳最近的行星。中国称之为辰星。它每87.968个地球日绕行太阳一周，而每公转2.01周同时也自转3圈。</p>
+                </li>
+                <li>
+                    <h2>金星</h2>
+                    <p>金星离太阳平均距离为1.08亿公里，是离太阳第二近，离地球最近的一颗行星。除太阳、月球之外，金星是天空中肉眼能看到的最亮的星，在我国古代曾被称作“太白”。我国民间把它称为启明星（出现在黎明东方天空时）或长庚星（出现在黄昏西方天空时）。</p>
+                </li>
+                <li>
+                    <h2>地球</h2>
+                    <p>地球（Earth）是太阳系八大行星之一，按照离太阳由近及远的次序排为第三颗，也是太阳系中直径、质量和密度最大的类地行星，距离太阳1.5亿公里。地球自西向东自转，同时围绕太阳公转。现有40亿～46亿岁， [1]  它有一个天然卫星——月球，二者组成一个天体系统——地月系统。46亿年以前起源于原始太阳星云。</p>
+                </li>
+                <li>
+                    <h2>火星</h2>
+                    <p>火星是太阳系八大行星之一，是太阳系由内往外数的第四颗行星，属于类地行星。直径约为地球的53%，质量为地球的11%，表面重力约为地球的2/5。自转轴倾角、自转周期均与地球相近，平均火星日为24小时39分35.244秒，公转一周约为地球公转时间的两倍。火星橘红色外表是地表的赤铁矿（氧化铁）火星是西方星座学白羊座的主行星，（并非天蝎座主宰行星）。</p>
+                </li>
+                <li>
+                    <h2>木星</h2>
+                    <p>木星是太阳系八大行星中体积最大、自转最快的行星，距离太阳第五远的行星。它的质量为太阳的千分之一，是太阳系中其它七大行星质量总和的2.5倍。由于木星与土星、天王星、海王星皆为气体行星，因此四者又合称类木行星（木星和土星合称气态行星）。木星是一个气态巨行星，占所有太阳系行星质量的70%，主要由氢组成，占其总质量的75%，其次为氦，占总质量的25%，岩核则含有其他较重的元素。人类所看到的通常是大气中云层的顶端，压强比1个大气压略高。</p>
+                </li>
+                <li>
+                    <h2>土星</h2>
+                    <p>土星（英文：Saturn，拉丁文：Saturnus，符号：♄），是太阳系八大行星之一，距日距离排太阳系第六位。土星是气态巨行星，中国古代人们把土星称为御星，欧洲古希腊称之为厉STAR-ARCHITECTURE。</p>
+                </li>
+                <li>
+                    <h2>天王星</h2>
+                    <p>天王星（英文：Uranus，拉丁文：Uranum，符号：♅或⛢），为太阳系八大行星之一，是太阳系由内向外的第七颗行星（18.37~20.08天文单位），其体积在太阳系中排名第三（比海王星大），质量排名第四（小于海王星），几乎横躺着围绕太阳公转（封面为旅行者二号飞跃天王星最近时拍摄的照片</p>
+                </li>
+                <li>
+                    <h2>海王星</h2>
+                    <p>海王星（英文：Neptune，拉丁文：Neptunium，符号：♆）是太阳系八大行星之一。海王星的轨道半长轴为30.1天文单位（在太阳系行星中排名第8位），质量为17.1地球质量（第3位），半径为3.9地球半径（第4位）</p>
+                </li>
+                <li>
+                    <h2>冥王星</h2>
+                    <p>冥王星（小行星序号：134340 Pluto；天文代号：♇，Unicode编码：U+2647）是柯伊伯带中的矮行星。冥王星是第一颗被发现的柯伊伯带天体。冥王星是太阳系内已知体积最大、质量第二大的矮行星。在直接围绕太阳运行的天体中，冥王星体积排名第9，质量排名第10。冥王星是体积最大的海外天体，其质量仅次于位于离散盘中的阋神星。与其他柯伊伯带天体一样，冥王星主要由岩石和冰组成。冥王星相对较小，仅有月球质量的1/6、月球体积的1/3。冥王星的轨道离心率及倾角皆较高，近日点为30天文单位（44亿公里），远日点为49天文单位（74亿公里）。冥王星因此周期性进入海王星轨道内侧。海王星与冥王星因相互的轨道共振而不会碰撞。在冥王星距太阳的平均距离上太阳光需要5.5小时到达冥王星。</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    document.oncontextmenu = function(e){
+        if(e.button == 2){
+            alert("你的行为可疑，系统已记录系统");
+            return false;
+        }
+    }
+</script>
+</html>
